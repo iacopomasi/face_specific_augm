@@ -1,0 +1,2 @@
+#image_key, path to image, path to landmarks
+input_1,input/input_1.jpg,input/input_1.pts

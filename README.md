@@ -136,15 +136,15 @@ The renderer currently assumes reasonable landmark detector responses. It will f
 Please cite our paper with the following bibtex if you use our face renderer:
 
 ``` latex
-@article{masi16_dowe,
-      title={Do We Really Need to Collect Millions of Faces 
-      for Effective Face Recognition?},
+@inproceedings{masi16dowe,
+      title={Do {W}e {R}eally {N}eed to {C}ollect {M}illions of {F}aces 
+      for {E}ffective {F}ace {R}ecognition?},
+      booktitle = {European Conference on Computer Vision},
       author={Iacopo Masi 
-      and Anh Tu\~{a}n Tr\~{a}n 
+      and Anh Tran 
       and Tal Hassner 
       and Jatuporn Toy Leksut 
       and G\'{e}rard Medioni},
-      booktitle={European Conference on Computer Vision},
       year={2016},
     }
 ```

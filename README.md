@@ -88,7 +88,7 @@ plotON = no
 resizeCNN = no
 
 ## ConvNet imag size (used with resizeCNN)
-cnnSize = 244
+cnnSize = 224
 
 ## Activate saving of rendered images
 saveON = yes

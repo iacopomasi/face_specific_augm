@@ -14,19 +14,24 @@ import ThreeD_Model
 import config
 
 this_path = os.path.dirname(os.path.abspath(__file__))
-
+opts = config.parse()
 ## 3D Models we are gonna use to to the rendering {0, -40, -75}
 pose_models = ['model3D_aug_-00','model3D_aug_-40','model3D_aug_-75',]
 ## In case we want to crop the final image for each pose specified above/
 ## Each bbox should be [tlx,tly,brx,bry]
-crop_models = [None,None,None]  # <-- with this no crop is done.     
-#crop_models = [[23,0,23+125,160],[0,0,210,230],[0,0,210,230]]
+resizeCNN = opts.getboolean('general', 'resizeCNN')
+cnnSize = opts.getint('general', 'cnnSize')
+if not opts.getboolean('general', 'resnetON'):
+    crop_models = [None,None,None]  # <-- with this no crop is done.     
+else:
+    #In case we want to produce images for ResNet
+    resizeCNN=True
+    cnnSize=224
+    crop_models = [[23,0,23+125,160],[0,0,210,230],[0,0,210,230]]  # <-- best crop for ResNet     
 
 
 def demo():
-    opts = config.parse()
-    nSub = opts.getint('general', 'nTotSub')
-    cnnSize = opts.getint('general', 'cnnSize')
+    nSub = opts.getint('general', 'nTotSub')    
     fileList, outputFolder = myutil.parse(sys.argv)
     # check for dlib saved weights for face landmark detection
     # if it fails, dowload and extract it manually from
@@ -85,7 +90,7 @@ def demo():
                     ## Cropping if required by crop_models
                     rendered_raw = myutil.cropFunc(pose,rendered_raw,crop_models[poseId])
                     ## Resizing if required
-                    if opts.getboolean('general', 'resizeCNN'):
+                    if resizeCNN:
                         rendered_raw = cv2.resize(rendered_raw, ( cnnSize, cnnSize ), interpolation=cv2.INTER_CUBIC )
                     ## Saving if required
                     if opts.getboolean('general', 'saveON'):

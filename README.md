@@ -81,24 +81,30 @@ The renderer reads the configuration file that is specified by a `config.ini` fi
 The following options are available:
 ```ini
 [general]
+## Activate this to make rendered images suitable for ResNet-101
+## for Face Recognition available here www.openu.ac.il/home/hassner/projects/augmented_faces/
+## Note: This will automatically disable some of the other options specified here
+## Moreover, you may have to code yourself in-plane alignment which is not provided here
+resnetON = no
+
 ## Activate plotting
 plotON = no
 
 ## Resize image to be fed into the CNN
-resizeCNN = no
+resizeCNN = yes
 
 ## ConvNet imag size (used with resizeCNN)
-cnnSize = 224
+cnnSize = 160
 
 ## Activate saving of rendered images
 saveON = yes
 
-## Number of total subjects for the 3D models
+## Number of total subjects for the 3D models 
 nTotSub = 10
 
 [renderer]
 ## Activate rendering of the background
-background = yes
+background = yes 
 
 ## Activate soft-symmetry
 symmetry = yes

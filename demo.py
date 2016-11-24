@@ -25,7 +25,8 @@ if not opts.getboolean('general', 'resnetON'):
     crop_models = [None,None,None]  # <-- with this no crop is done.     
 else:
     #In case we want to produce images for ResNet
-    resizeCNN=True
+    resizeCNN=False #We can decide to resize it later using the CNN software or now here.
+    ## The images produced without resizing could be useful to provide a reference system for in-plane alignment
     cnnSize=224
     crop_models = [[23,0,23+125,160],[0,0,210,230],[0,0,210,230]]  # <-- best crop for ResNet     
 

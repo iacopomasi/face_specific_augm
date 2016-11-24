@@ -123,7 +123,7 @@ flipBackground = no
 ```
 
 A few explanations on some not-so-obvious options:
-* `resnetON` if activated, set some parameters to produce rendered images that best fit [ResNet101 for Face Recognition](www.openu.ac.il/home/hassner/projects/augmented_faces/). Note you have still to code yourself in-plane alignment. You can use the produced images with `resnetON=yes` as reference coordinate systems to do in-plane alignment.
+* `resnetON` if activated, set some parameters to produce rendered images that best fit [ResNet101 for Face Recognition](www.openu.ac.il/home/hassner/projects/augmented_faces/). Note you have still to code in-plane alignment by yourself. You can use the produced images with `resnetON=yes` as reference coordinate systems to do in-plane alignment.
 * `nTotSub` controls how many generic 3D shapes should be used to render the faces. If 10 is specified, all ten 3D generic shapes provide with this distribution are used. If 1, only the first generic shape is used, if 2, the first two are used, and so forth. Note that you need to edit the code if you want to render e.g. _only_ subject 7.
 * `background` if yes the code will try to render the full background (head+background). Otherwise only the face region of the head is renderer and the background is left black.
 * `scaleFaceX` this parameter control how much you want to sample the background when you render a profile faces and the background falls outside of the image. Basically it controls the distance of the projected points on the X-axis to the face part; If you change this param, you can control this behavior.

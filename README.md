@@ -168,7 +168,7 @@ Please cite our paper with the following bibtex if you use our face renderer:
 [4] Brendan F. Klare, Ben Klein, Emma Taborsky, Austin Blanton, Jordan Cheney, Kristen Allen, Patrick Grother, Alan Mah, Anil K. Jain, "Pushing the Frontiers of Unconstrained Face Detection and Recognition: IARPA Janus Benchmark A", CVPR 2015
 
 ## Changelog
-- September 2016, First Release 
+- September 2016, First  Release 
 
 ## Disclaimer
 

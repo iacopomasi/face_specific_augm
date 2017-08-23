@@ -16,13 +16,19 @@ import config
 this_path = os.path.dirname(os.path.abspath(__file__))
 opts = config.parse()
 ## 3D Models we are gonna use to to the rendering {0, -40, -75}
-pose_models = ['model3D_aug_-00','model3D_aug_-40','model3D_aug_-75',]
+newModels = opts.getboolean('renderer', 'newRenderedViews')
+if opts.getboolean('renderer', 'newRenderedViews'):
+    pose_models_folder = '/models3d_new/'
+    pose_models = ['model3D_aug_-00_00','model3D_aug_-22_00','model3D_aug_-40_00','model3D_aug_-55_00','model3D_aug_-75_00']
+else:
+    pose_models_folder = '/models3d/'
+    pose_models = ['model3D_aug_-00','model3D_aug_-40','model3D_aug_-75',]
 ## In case we want to crop the final image for each pose specified above/
 ## Each bbox should be [tlx,tly,brx,bry]
 resizeCNN = opts.getboolean('general', 'resizeCNN')
 cnnSize = opts.getint('general', 'cnnSize')
 if not opts.getboolean('general', 'resnetON'):
-    crop_models = [None,None,None]  # <-- with this no crop is done.     
+    crop_models = [None,None,None,None,None]  # <-- with this no crop is done.     
 else:
     #In case we want to produce images for ResNet
     resizeCNN=False #We can decide to resize it later using the CNN software or now here.
@@ -39,7 +45,7 @@ def demo():
     # http://sourceforge.net/projects/dclib/files/d.10/shape_predictor_68_face_landmarks.dat.bz2
     check.check_dlib_landmark_weights()
     ## Preloading all the models for speed
-    allModels = myutil.preload(this_path,pose_models,nSub)
+    allModels = myutil.preload(this_path,pose_models_folder,pose_models,nSub)
     
     for f in fileList:
         if '#' in f: #skipping comments
@@ -63,7 +69,7 @@ def demo():
             ## To refine the estimation of yaw. Yaw can change from model to model...
             img_display = img.copy()
             img, lmarks, yaw = myutil.flipInCase(img,lmarks,allModels)
-            listPose = myutil.decidePose(yaw,opts)
+            listPose = myutil.decidePose(yaw,opts, newModels)
             ## Looping over the poses
             for poseId in listPose:
             	posee = pose_models[poseId]

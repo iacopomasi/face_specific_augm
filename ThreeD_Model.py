@@ -8,9 +8,11 @@ np.set_printoptions(formatter={'float_kind': lambda x: "%.4f" % x})
 
 
 class FaceModel:
-    def __init__(self, path, name):
+    def __init__(self, path, name, getMask):
         self.load_model(path, name)
-        self.eyemask = self.getEyeMask(width=8,plot=False)
+        self.eyemask = None
+        if getMask:
+            self.eyemask = self.getEyeMask(width=8,plot=False)
 
     def load_model(self, path, name):
         model = scio.loadmat(path)[name]

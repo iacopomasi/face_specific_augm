@@ -52,7 +52,7 @@ def isFrontal(pose):
 		return True
 	return False
 
-def preload(this_path, pose_models,nSub):
+def preload(this_path, pose_models_folder, pose_models,nSub):
     print '> Preloading all the models for efficiency'
     allModels= dict()
     for posee in pose_models:
@@ -61,7 +61,12 @@ def preload(this_path, pose_models,nSub):
             pose =   posee + '_' + str(subj).zfill(2) +'.mat'
             # load detections performed by dlib library on 3D model and Reference Image
             print "> Loading pose model in " + pose
-            model3D = ThreeD_Model.FaceModel(this_path + "/models3d/" + pose, 'model3D')
+            #model3D = ThreeD_Model.FaceModel(this_path + "/models3d_new/" + pose, 'model3D')
+            if '-00' in posee:
+                    model3D = ThreeD_Model.FaceModel(this_path + pose_models_folder + pose, 'model3D', True)
+            else:
+                    model3D = ThreeD_Model.FaceModel(this_path + pose_models_folder + pose, 'model3D', False)
+
             allModels[pose] = model3D
     return allModels
 
@@ -143,14 +148,49 @@ def show(img_display, img, lmarks, frontal_raw, \
     enter = raw_input("Press [enter] to continue.")
     plt.clf()
 
-def decidePose(yaw,opts):
-	if opts.getboolean('renderer', 'nearView'):
-		yaw = abs(yaw)
-		# If yaw is near-frontal we render everything
-		if yaw < 15:
-			return [0,1,2]
-		# otherwise we render only 2 profiles (from profile to frontal is noisy)
-		else:
-			return [1,2]
+# def decidePose(yaw,opts):
+# 	if opts.getboolean('renderer', 'nearView'):
+# 		yaw = abs(yaw)
+# 		# If yaw is near-frontal we render everything
+# 		if yaw < 15:
+# 			return [0,1,2]
+# 		# otherwise we render only 2 profiles (from profile to frontal is noisy)
+# 		else:
+# 			return [1,2]
+# 	else:
+# 		return [0,1,2]
+
+def decidePose(yaw,opts, newModels=True):
+	if newModels == True:
+	    if opts.getboolean('renderer', 'nearView'):
+	        yaw = abs(yaw)
+	        # If yaw is near-frontal we render everything                                                                                                                                                                            
+	        if yaw < 15:
+	                return [0,1,2,3,4]
+	        # otherwise we render only 2 profiles (from profile to frontal is noisy)                                                                                                                                                 
+	        elif yaw > 40:
+	                return [3,4]
+	        else:
+	                return [2,3,4]
+	    else:
+	        return [0,1,2,3,4]
 	else:
-		return [0,1,2]
+		if opts.getboolean('renderer', 'nearView'):
+			yaw = abs(yaw)
+			# If yaw is near-frontal we render everything
+			if yaw < 15:
+				return [0,1,2]
+			# otherwise we render only 2 profiles (from profile to frontal is noisy)
+			else:
+				return [1,2]
+		else:
+			return [0,1,2]
+def decideSide_from_db(img, pose_Rt, allModels):
+	## Check if we need to flip the image                                                                                                                                                                                            
+	#model3D = ThreeD_Model.FaceModel(this_path + "/models3d/" + pose_models[0] +'_01.mat', 'model3D')                                                                                                                               
+	## Getting yaw estimate over poses and subjects                                                                                                                                                                                  
+	mm = allModels.values()[0]
+	proj_matrix, camera_matrix, rmat, tvec = calib.estimate_camera(mm, pose_Rt, pose_db_on=True)
+	yaw =  calib.get_yaw(rmat)
+	print '> Yaw value mean: ',  yaw
+	return yaw

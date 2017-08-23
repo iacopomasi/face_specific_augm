@@ -5,19 +5,27 @@ import cv2
 import math
 
 
-def estimate_camera(model3D, fidu_XY):
-    rmat, tvec = calib_camera(model3D, fidu_XY)
+def estimate_camera(model3D, fidu_XY, pose_db_on=False):
+    if pose_db_on:
+        rmat, tvec = calib_camera(model3D, fidu_XY, pose_db_on=True)
+        tvec = tvec.reshape(3,1)
+    else:
+        rmat, tvec = calib_camera(model3D, fidu_XY)
     RT = np.hstack((rmat, tvec))
     projection_matrix = model3D.out_A * RT
     return projection_matrix, model3D.out_A, rmat, tvec
 
-def calib_camera(model3D, fidu_XY):
+def calib_camera(model3D, fidu_XY, pose_db_on=False):
     #compute pose using refrence 3D points + query 2D point
     ## np.arange(68)+1 since matlab starts from 1
-    goodind = np.setdiff1d(np.arange(68)+1, model3D.indbad)
-    goodind=goodind-1
-    fidu_XY = fidu_XY[goodind,:]
-    ret, rvecs, tvec = cv2.solvePnP(model3D.model_TD, fidu_XY, model3D.out_A, None, None, None, False)
+    if pose_db_on:
+        rvecs = fidu_XY[0:3]
+        tvec = fidu_XY[3:6]
+    else:
+        goodind = np.setdiff1d(np.arange(68)+1, model3D.indbad)
+        goodind=goodind-1
+        fidu_XY = fidu_XY[goodind,:]
+        ret, rvecs, tvec = cv2.solvePnP(model3D.model_TD, fidu_XY, model3D.out_A, None, None, None, False)
     rmat, jacobian = cv2.Rodrigues(rvecs, None)
 
     inside = calc_inside(model3D.out_A, rmat, tvec, model3D.size_U[1], model3D.size_U[0], model3D.model_TD)

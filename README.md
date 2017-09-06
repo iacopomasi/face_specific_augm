@@ -5,6 +5,9 @@ This page contains an improved version of the face renderer from the paper _I. M
 
 This release is part of an on-going face recognition project [4]. Please, check [this project page](http://www.openu.ac.il/home/hassner/projects/augmented_faces/) for updates and more data.
 
+**New!** We released an [end-to-end pipeline](https://github.com/fengju514/Face-Pose-Net) with Python code and deep models for direct 6DoF, 3D head pose estimation and face rendering (e.g., _frontalization_). The new code removes the need to run external facial landmark detection methods for alignment. Instead, it uses our extremely fast and robust, deep face pose estimator, described in [this paper](https://arxiv.org/abs/1708.07517).
+
+
 ![Teaser](http://www-bcf.usc.edu/~iacopoma/img/collect2.png)
 
 
@@ -114,9 +117,6 @@ scaleFaceX = 0.5
 
 ## Activate Near View Rendering [2]
 nearView = yes
-
-## If we want to use the new Rendered Views with the head better visible and more poses {0,22,40,55,75}
-newRenderedViews = yes
 
 ## (used if symmetry is applied)
 [symmetry]

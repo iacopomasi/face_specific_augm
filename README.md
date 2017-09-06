@@ -1,7 +1,7 @@
 Face Renderer
 ===========
 
-This page contains an improved version of the face renderer from the paper _I. Masi\*, A. Tran\*, T. Hassner\*, J. Leksut, G. Medioni, "Do We Really Need to Collect Million of Faces for Effective Face Recognition? ", in Proc. of ECCV 2016 [1]_.
+This page contains an improved version of the face renderer from the paper _I. Masi\*, A. Tran\*, T. Hassner\*, J. Leksut, G. Medioni, "[Do We Really Need to Collect Million of Faces for Effective Face Recognition?](http://www.openu.ac.il/home/hassner/projects/augmented_faces/Masietal2016really.pdf) ", in Proc. of ECCV 2016 [1]_.
 
 This release is part of an on-going face recognition project [4]. Please, check [this project page](http://www.openu.ac.il/home/hassner/projects/augmented_faces/) for updates and more data.
 

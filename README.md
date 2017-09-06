@@ -115,6 +115,9 @@ scaleFaceX = 0.5
 ## Activate Near View Rendering [2]
 nearView = yes
 
+## If we want to use the new Rendered Views with the head better visible and more poses {0,22,40,55,75}
+newRenderedViews = yes
+
 ## (used if symmetry is applied)
 [symmetry]
 

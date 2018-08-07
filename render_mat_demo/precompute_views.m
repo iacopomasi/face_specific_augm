@@ -11,9 +11,9 @@ for m=1:10
         model_name=['data/bm'  sprintf('%02d',m) '_plane.wrl'];
         [depth, rendered, ~, A, R, T] = renderer(crop_size,crop_size,model_name,0,0, 0, -90+tilt, yaw, 0,'xyz');
         sim = adjust_translation(yaw);
-        %% Zooming a bit and adding translation
+        %% Zooming a bit and fixing translation
         A(1,1)=2880;A(2,2)=2880;
-        A(1,3)=280+sim.tx; A(2,3)=348;+sim.ty;
+        A(1,3)=280+sim.tx; A(2,3)=348;
         %% Now doing the final rendering that we want
         [depth_new, rendered_new, U, A, R, T] = renderer(crop_size, crop_size, model_name,0,0,A,R,T);
         %% Showing

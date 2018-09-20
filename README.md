@@ -7,6 +7,9 @@ This release is part of an on-going face recognition project [4]. Please, check 
 
 **New!** We released an [end-to-end pipeline](https://github.com/fengju514/Face-Pose-Net) with Python code and deep models for direct 6DoF, 3D head pose estimation and face rendering (e.g., _frontalization_). The new code removes the need to run external facial landmark detection methods for alignment. Instead, it uses our extremely fast and robust, deep face pose estimator, described in [this paper](https://arxiv.org/abs/1708.07517) [5].
 
+ __New!__ The code now supports adding novel views if you want for other yaw angles or even new title angles. You have to modify the code to incorporate the logic of using the novel views.
+For creating the new precomputed rendered views, [please see this page](render_mat_demo)
+
 
 ![Teaser](http://www-bcf.usc.edu/~iacopoma/img/collect2.png)
 

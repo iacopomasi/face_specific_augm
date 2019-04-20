@@ -11,7 +11,7 @@ This release is part of an on-going face recognition project [4]. Please, check 
 For creating the new precomputed rendered views, [please see this page](render_mat_demo)
 
 
-![Teaser](http://www-bcf.usc.edu/~iacopoma/img/collect2.png)
+![Teaser](https://i.imgur.com/1bNUXN6.png)
 
 
 The code has been ported and extended from the re-implementation provided by [Douglas Souza](https://github.com/dougsouza/face-frontalization) of the MATLAB frontalization code [3] 

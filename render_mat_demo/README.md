@@ -26,7 +26,7 @@ In order to get the 3D models we used, you need first to download the BFM datase
 - *Once you signed their agreement*, you can get a copy of the models by sending an email to [iacopoma@usc.edu](mailto:iacopoma@usc.edu) and I will share the 3D models with you.
 - Place the 3D models `wrl` files directly into the data folder as follows:
 
-<img src="http://www-bcf.usc.edu/~iacopoma/img/data_3d.png" alt="data3d" width="200px" />
+<img src="../images/data_3d.png" alt="data3d" width="200px" />
 
 You also have to make sure that [OpenSceneGraph CG renderer MATLAB Wrapper](https://www.openu.ac.il/home/hassner/projects/poses//) is fully working.
 

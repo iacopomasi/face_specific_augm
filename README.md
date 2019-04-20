@@ -137,7 +137,7 @@ A few explanations on some not-so-obvious options:
 * `flipBackground` Determines if the background is flipped or not when applying symmetry (you will filp the head and the background as well).
 
 ## Sample Results
-![Input](http://www-bcf.usc.edu/~iacopoma/download/input.jpg) ![Pose_0_mulitShape](images/pose1.gif) ![Pose_40_mulitShape](http://www-bcf.usc.edu/~iacopoma/download/pose2.gif) ![Pose_75_mulitShape](http://www-bcf.usc.edu/~iacopoma/download/pose3.gif)
+![Input](images/input.jpg) ![Pose_0_mulitShape](images/pose1.gif) ![Pose_40_mulitShape](images/pose2.gif) ![Pose_75_mulitShape](images/pose3.gif)
 
 <sub>Respectively: Input image; then frontalization (0) with multi-shapes; render to (40) with multi-shapes; render to (75) with multi-shapes.</sub>
 

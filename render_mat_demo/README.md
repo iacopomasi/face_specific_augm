@@ -5,7 +5,7 @@ This page contains the MATLAB code to precompute offline the 3D views used in th
 
 This release is part of a face recognition project. Please, check [this project page](http://www.openu.ac.il/home/hassner/projects/augmented_faces/) for updates and more data.
 
-<img src="http://www-bcf.usc.edu/~iacopoma/img/render_fg17.png" alt="Teaser" width="400px" align="middle" />
+<img src="../images/render_fg17.png" alt="Teaser" width="400px" align="middle" />
 
 The 3D rendered views are created beforehand in MATLAB with the script `precompute_views.m`. This allows having precomputed view to render tilt variations as well or more angles.
 The script will produce `.mat` files in the `models10_new` that can be used in the rendering by changing the logic of the code in order to use them. All the necessary information will be inside the `.mat` file. The main entity in the matlab file is the **U** matrix visualized in the figure above plus other necessary informations.

@@ -82,10 +82,10 @@ The layer is available in the folder [data_aug_layer](./data_aug_layer).
 ### Other Usages
 
 #### Visualization of the preprocessing.
-We also provide a jupyter notebook to visualize the preprocessing metadata such as bounding box, 3D pose, thus landmarks, and finally yaw values. The notebook is available here  [[jupyter notebook viz]](notebooks/notebook_viz.md)|[[HTML]](notebooks/notebook_viz.md)
+We also provide a jupyter notebook to visualize the preprocessing metadata such as bounding box, 3D pose, thus landmarks, and finally yaw values. The notebook is available here  [[jupyter notebook viz]](notebooks/check_data_cow.ipynb)
 
 #### Use of the layer out of the training
-If one wants can also use the layer outside from training. This jupyter notebook shows how to use the layer to continously fetch images from the layer queue and visualize them: [[jupyter notebook viz]](notebooks/#)|[[HTML]](notebooks/#)
+If one wants can also use the layer outside from training. This jupyter notebook shows how to use the layer to continously fetch images from the layer queue and visualize them: [[jupyter notebook viz]](notebooks/#)
 
 ### Parameters
 

@@ -77,7 +77,7 @@ where:
  
 _An example of pre-generated LMDBs files on bunch of samples a is available  in order to chek the format is availalble_
 
-The layer is available in the folder [data_aug_layer](./data_aug_layer).
+The layer is available in the folder [data_aug_layer](data_layer).
 
 ### Other Usages
 
